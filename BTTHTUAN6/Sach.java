@@ -2,11 +2,11 @@ package BTTUAN5;
 
 public class Sach
 {
-    private String maSach;
-    private String tenSach;
-    private String tacGia;
-    private int namXuatBan;
-    private int soLuong;
+    protected String maSach;
+    protected String tenSach;
+    protected String tacGia;
+    protected int namXuatBan;
+    protected int soLuong;
 
     public Sach()
     {
@@ -20,6 +20,7 @@ public class Sach
         this.namXuatBan = namXuatBan;
         this.soLuong = soLuong;
     }
+
 
     public void hienThiThongTin()
     {
