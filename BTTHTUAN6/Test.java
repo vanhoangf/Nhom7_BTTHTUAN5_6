@@ -1,44 +1,33 @@
-package sach;
-
+package BTTHTUAN6;
 import java.util.Scanner;
 
-public class Test {
-    public static void main(String[] args) {
-        QuanLySach qlSach = new QuanLySach();
-        Scanner sc = new Scanner(System.in);
+public class Test
+{
+    public static void main(String[] args)
+    {
+       Scanner sc = new Scanner(System.in);
+       QuanLySach qls = new QuanLySach();
 
-        while (true) {
-            System.out.println("--Quan ly sach--");
-            System.out.println("1. Them moi sach");
-            System.out.println("2. Xoa sach");
-            System.out.println("3. Cap nhat thong tin sach");
-            System.out.println("4. Tim kiem sach");
-            System.out.println("5. Hien thi sach");
-            System.out.println("6. Thoat");
-            System.out.print("Chon chuc nang: ");
-            int chon = Integer.parseInt(sc.nextLine());
-            switch (chon) {
-                case 1:
-                    qlSach.themSach();
-                    break;
-                case 2:
-                    qlSach.xoaSach();
-                    break;
-                case 3:
-                    qlSach.capNhatSach();
-                    break; 
-                case 4:
-                    qlSach.timKiemSach();
-                    break;    
-                case 5:
-                    qlSach.hienThiSach();
-                    break;             
-                case 6:
-                    System.out.println("Thoat chuong trinh...");
-                    return;
-                default:
-                    System.out.println("Lua chon khong hop le!");
-            }
-        }
+       qls.themSach(new SachTieuThuyet("MS001", "Harry Potter", "J.K.Rowling", 2005, 10, "Võng Sư", true));
+       qls.themSach(new SachGiaoTrinh("MS002", "Lập Trình hướng đối tượng", "Trà My", 2015, 20, "Lập Trình", "Cao"));
+       qls.hienThiDanhSach();
+
+       System.out.print("Nhập mã sách muốn tìm: ");
+       String masach = sc.nextLine();       
+       Sach timsach = qls.timKiemSach(masach);
+       if (timsach != null)
+            timsach.hienThiThongTin();
+       else
+            System.out.println("Không tìm thấy sách.");
+
+       System.out.println("Nhập thông tin mã sách muốn cập nhật: ");
+       String macnn = sc.nextLine();
+       qls.capNhatSach(macnn, new SachTieuThuyet("MS001", "Ronaldo", "J.K.Rowling", 2005, 10, "Võng Sư", true));
+       qls.hienThiDanhSach();
+       
+       System.out.println("Nhập thông tin sách muốn xóa: ");
+       String mxoa = sc.nextLine();
+       qls.xoaSach(mxoa);
+       qls.hienThiDanhSach();
     }
 }
