@@ -1,24 +1,30 @@
-package BTTUAN5;
 
-public class SachGiaoTrinh extends Sach
+package sach;
+
+public class SachGiaoTrinh extends Sach 
 {
     private String monHoc;
     private String capDo;
-    public SachGiaoTrinh(String maSach, String tenSach, String tacGia, int namXuatBan, int soLuong, String monHoc, String capDo)
+    
+    public SachGiaoTrinh()
     {
-        super(maSach, tenSach, tacGia, namXuatBan, soLuong);
+        super();
+    }
+    public SachGiaoTrinh( String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, String monHoc, String capDo)
+    {
+        super(maSach, tieuDe, tacGia, namXuatBan, soLuong);
         this.monHoc = monHoc;
         this.capDo = capDo;
     }
-    public String getMonHoc()
+    public String getMonHoc() 
     {
         return monHoc;
     }
     public void setMonHoc(String monHoc)
     {
-        this.monHoc = monHoc;
+        this.monHoc=monHoc;
     }
-    public String getCapDo()
+    public String getCapDo() 
     {
         return capDo;
     }
@@ -26,9 +32,17 @@ public class SachGiaoTrinh extends Sach
     {
         this.capDo = capDo;
     }
-    @Override
-    public String toString()
+    
+    public String toString() 
     {
-        return super.toString() + ", Môn học: " + this.monHoc + ", Cấp độ: " + this.capDo;
+        return maSach + "\t" + tieuDe + "\t" + tacGia + "\t" + namXuatBan + "\t" + soLuong + "\t" + monHoc + "\t" + capDo;
+    }
+    @Override
+    public void hienThiThongTin() 
+    {
+        super.hienThiThongTin(); 
+        System.out.println("Mon hoc: " + (monHoc != null ? monHoc : "--"));
+        System.out.println("Cap do: " + (capDo != null ? capDo : "--"));
+        System.out.println("---------------------------------");
     }
 }

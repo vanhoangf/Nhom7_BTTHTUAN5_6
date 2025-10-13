@@ -1,79 +1,77 @@
-package BTTUAN5;
 
-public class Sach
+package sach;
+
+public class Sach 
 {
     protected String maSach;
-    protected String tenSach;
+    protected String tieuDe;
     protected String tacGia;
     protected int namXuatBan;
-    protected int soLuong;
+    protected int soLuong; 
 
-    public Sach()
-    {
-    }
-
-    public Sach(String maSach, String tenSach, String tacGia, int namXuatBan, int soLuong)
+    public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong) 
     {
         this.maSach = maSach;
-        this.tenSach = tenSach;
+        this.tieuDe = tieuDe;
         this.tacGia = tacGia;
         this.namXuatBan = namXuatBan;
         this.soLuong = soLuong;
     }
-
-
-    public void hienThiThongTin()
+    
+    public Sach() 
     {
-        System.out.println("Mã sách: " + maSach);
-        System.out.println("Tên sách: " + tenSach);
-        System.out.println("Tác giả: " + tacGia);
-        System.out.println("Năm xuất bản: " + namXuatBan);
-        System.out.println("Số lượng: " + soLuong);
+        
     }
 
-    // setter trước rồi getter sau
-    public void setMaSach(String maSach)
-    {
-        this.maSach = maSach;
-    }
     public String getMaSach()
     {
         return maSach;
     }
-
-    public void setTenSach(String tenSach)
+    public void setMaSach(String maSach)
     {
-        this.tenSach = tenSach;
+        this.maSach=maSach;
     }
-    public String getTenSach()
+    public String getTieuDe()
     {
-        return tenSach;
+        return tieuDe;
     }
-
-    public void setTacGia(String tacGia)
+    public void setTieuDe(String tieuDe)
     {
-        this.tacGia = tacGia;
+        this.tieuDe=tieuDe;
     }
     public String getTacGia()
     {
         return tacGia;
     }
-
-    public void setNamXuatBan(int namXuatBan)
+    public void setTacGia(String tacGia)
     {
-        this.namXuatBan = namXuatBan;
+        this.tacGia=tacGia;
     }
     public int getNamXuatBan()
     {
         return namXuatBan;
     }
-
-    public void setSoLuong(int soLuong)
+    public void setNamXuatBan(int namXuatBan)
     {
-        this.soLuong = soLuong;
+        this.namXuatBan=namXuatBan;
     }
     public int getSoLuong()
     {
         return soLuong;
     }
+    public void setSoLuong(int soLuong)
+    {
+        this.soLuong=soLuong;
+    }
+    
+    public void hienThiThongTin() 
+    {
+        System.out.println("Ma sach: " + (maSach != null ? maSach : "--"));
+        System.out.println("Tieu de: " + (tieuDe != null ? tieuDe : "--"));
+        System.out.println("Tac gia: " + (tacGia != null ? tacGia : "--"));
+        System.out.println("Nam xuat ban: " + (namXuatBan != 0 ? namXuatBan : "--"));
+        System.out.println("So luong: " + (soLuong != 0 ? soLuong : "--"));
+    }
+  
+    
 }
