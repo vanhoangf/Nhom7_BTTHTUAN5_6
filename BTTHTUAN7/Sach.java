@@ -1,13 +1,12 @@
 package BTTHTUAN7;
-
 public abstract class Sach 
 {
-    protected String maSach;
-    protected String tieuDe;
-    protected String tacGia;
-    protected int namXuatBan;
-    protected int soLuong;
-    protected double giaCoBan;
+    private String maSach;
+    private String tieuDe;
+    private String tacGia;
+    private int namXuatBan;
+    private int soLuong;
+    private double giaCoBan;
     
     public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan) 
     {
@@ -19,81 +18,80 @@ public abstract class Sach
         this.giaCoBan = giaCoBan;
     }
 
-    public Sach()
+    /*public Sach()
     {  
-    }
+    }*/
 
     public void hienThiThongTin()
     {
-        System.out.println("Mã sách: " + maSach);
-        System.out.println("Tiêu đề: " + tieuDe);
-        System.out.println("Tác giả: " + tacGia);
-        System.out.println("Năm xuất bản: " + namXuatBan);
-        System.out.println("Số lượng: " + soLuong);
+        System.out.println("Ma Sach: " + maSach);
+        System.out.println("Tieu de: " + tieuDe);
+        System.out.println("Tac gia: " + tacGia);
+        System.out.println("Nam xuat ban: " + namXuatBan);
+        System.out.println("So Luong: " + soLuong);
     }
 
-    public void setMaSach(String maSach) 
+    public void setMaSach(String maSach)
     {
         this.maSach = maSach;
     }
-    public String getMaSach() 
+    public String getMaSach()
     {
         return maSach;
     }
 
-    public void setTieuDe(String tieuDe) 
+    public void setTieuDe(String tieuDe)
     {
         this.tieuDe = tieuDe;
     }
-    public String getTieuDe() 
+    public String getTieuDe()
     {
         return tieuDe;
     }
 
-    public void setTacGia(String tacGia) 
+    public void setTacGia(String tacGia)
     {
         this.tacGia = tacGia;
     }
-    public String getTacGia() 
+    public String getTacGia()
     {
         return tacGia;
     }
 
-    public void setNamXB(int namXuatBan) 
+    public void setNamXB(int namXuatBan)
     {
         this.namXuatBan = namXuatBan;
     }
-    public int getNamXB() 
+    public int getNamXB()
     {
         return namXuatBan;
     }
 
-    public void setSL(int soLuong) 
+    public void setSL(int soLuong)
     {
         this.soLuong = soLuong;
     }
-    public int getSL() {
+    public int getSL()
+    {
         return soLuong;
     }
-
     public void setGiaCoBan(double giaCoBan) 
     {
-        this.giaCoBan = giaCoban;
+        this.giaCoBan = giaCoBan;
     }
-    public double getGiaCoBan()
+    public double getGiaCoBan() 
     {
-        return giaCoBan;
+        return this.giaCoBan;
     }
-
     @Override
-    public String toString()
+    public String toString() 
     {
-        return "Mã sách: " + maSach +
-               "\nTiêu đề: " + tieuDe +
-               "\nTác giả: " + tacGia +
-               "\nNăm xuất bản: " + namXuatBan +
-               "\nSố lượng: " + soLuong;
+        return "Ma Sach: " + maSach +
+            ", Tieu de: '" + tieuDe + 
+            ", Tac gia: '" + tacGia + 
+            ", Nam Xuat Ban: " + namXuatBan +
+            ", So Luong: " + soLuong;
     }
-    
+    @Override
     public abstract double tinhGiaBan();
 }
