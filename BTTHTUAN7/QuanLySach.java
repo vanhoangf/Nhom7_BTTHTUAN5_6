@@ -1,68 +1,78 @@
-package sach;
+package BTTHTUAN7;
 import java.util.ArrayList;
-import java.util.List;
 
-public class QuanLySach
+public class QuanLySach 
 {
-    private List<Sach> danhSachSach;
+    
+    private ArrayList <Sach> danhSachSach;
 
     public QuanLySach() 
     {
         danhSachSach = new ArrayList<>();
     }
-      
-    public void themSach(Sach sach) 
+    
+    public void themSach(Sach s) 
     {
-        danhSachSach.add(sach);
-        System.out.println("Đa them sach: " + sach.getTieuDe());
+        danhSachSach.add(s);
+        System.out.println("Đã thêm sách: " + s.getMaSach());
     }
-
-    public void xoaSach(String maSach) 
+   
+    public boolean xoaSach(String maSach) 
     {
-        Sach sachCanXoa = timSach(maSach);
-        if (sachCanXoa != null) 
+        for (Sach s : danhSachSach) 
         {
-            danhSachSach.remove(sachCanXoa);
-            System.out.println("Đa xoa sach co ma: " + maSach);
-        } 
-        else 
-            System.out.println("Khong tim thay sach co ma: " + maSach);
+            if (s.getMaSach().equals(maSach)) 
+            {
+                danhSachSach.remove(s);
+                System.out.println("Đã xóa sách có mã: " + maSach);
+                return true;
+            }
+        }
+        System.out.println("Không tìm thấy sách có mã: " + maSach);
+        return false;
     }
 
-    public void capNhatSach(String maSach, Sach thongTinSachMoi) 
+    public boolean capNhatSach(String maSach, Sach sachMoi) 
     {
         for (int i = 0; i < danhSachSach.size(); i++) 
         {
             if (danhSachSach.get(i).getMaSach().equals(maSach)) 
             {
-                danhSachSach.set(i, thongTinSachMoi);
-                System.out.println("Da cap nhat sach co ma: " + maSach);
-                return;
+                danhSachSach.set(i, sachMoi);
+                System.out.println("Đã cập nhật sách có mã: " + maSach);
+                return true;
             }
         }
-        System.out.println("Khong tim thay sach de cap nhat.");
+        System.out.println("Không tìm thấy sách có mã: " + maSach);
+        return false;
     }
 
-    public Sach timSach(String maSach) 
+    public Sach timKiemSach(String maSach) 
     {
-        for (Sach sach : danhSachSach) 
-            if (sach.getMaSach().equals(maSach)) 
-                return sach;
-        return null; 
+        for (Sach s : danhSachSach) 
+        {
+            if (s.getMaSach().equals(maSach)) 
+            {
+                return s;
+            }
+        }
+        return null;
     }
 
     public void hienThiDanhSach() 
     {
         if (danhSachSach.isEmpty()) 
         {
-            System.out.println("Danh sach sach trong.");
-            return;
-        }
-        System.out.println("======= DANH SACH SACH =======");
-        for (Sach sach : danhSachSach) 
+            System.out.println("Danh sách sách trống!");
+        } 
+        else 
         {
-            System.out.println(sach.toString()); 
+            System.out.println("Danh sách các sách hiện có:");
+            for (Sach s : danhSachSach) 
+            {
+                System.out.println("--------------------------------");
+                System.out.println(s.toString());
+            }
         }
-        System.out.println("==============================");
     }
 }
