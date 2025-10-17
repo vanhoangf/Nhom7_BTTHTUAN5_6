@@ -1,48 +1,33 @@
-
-package sach;
-
-public class SachGiaoTrinh extends Sach 
+package Nhom7_BTHI.J_Test;
+public class SachGiaoTrinh extends Sach
 {
     private String monHoc;
     private String capDo;
-    
-    public SachGiaoTrinh()
-    {
-        super();
-    }
-    public SachGiaoTrinh( String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, String monHoc, String capDo)
+    public SachGiaoTrinh(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, String monHoc, String capDo)
     {
         super(maSach, tieuDe, tacGia, namXuatBan, soLuong);
         this.monHoc = monHoc;
         this.capDo = capDo;
     }
-    public String getMonHoc() 
-    {
-        return monHoc;
-    }
     public void setMonHoc(String monHoc)
     {
-        this.monHoc=monHoc;
-    }
-    public String getCapDo() 
+        this.monHoc = monHoc;
+    } 
+    public String getMonHoc()
     {
-        return capDo;
+        return monHoc;
     }
     public void setCapDo(String capDo)
     {
         this.capDo = capDo;
-    }
-    
-    public String toString() 
+    } 
+    public String getCapDo()
     {
-        return maSach + "\t" + tieuDe + "\t" + tacGia + "\t" + namXuatBan + "\t" + soLuong + "\t" + monHoc + "\t" + capDo;
+        return capDo;
     }
     @Override
-    public void hienThiThongTin() 
+    public String toString()
     {
-        super.hienThiThongTin(); 
-        System.out.println("Mon hoc: " + (monHoc != null ? monHoc : "--"));
-        System.out.println("Cap do: " + (capDo != null ? capDo : "--"));
-        System.out.println("---------------------------------");
+        return super.toString() + ", Mon hoc: " + monHoc + ", Cap do: " + capDo;
     }
 }

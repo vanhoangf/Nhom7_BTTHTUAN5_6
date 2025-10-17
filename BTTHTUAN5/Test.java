@@ -1,16 +1,16 @@
-package sach;
-
-public class Test {
-    public static void main(String[] args)
+public class Test 
+{
+    public static void main(String[] args) 
     {
-       Sach s1=new Sach("sach1", "Giao khoa","Nguyen Van A", 2024,10);
-       s1.hienThi();
-       System.out.println("");
-       Sach s2=new Sach("sach2", "Nguyen Van B",20);
-       s2.hienThi();
-       System.out.println("");
-       Sach s3=new Sach("sach2", "Truyen tranh","Nguyen Van B");
-       s3.hienThi();
+        Sach s1 = new Sach("sach1", "Tiểu thuyết", "Hồ Văn Hoàng", 2020, 10);
+        s1.hienThiThongTin();
+        System.out.println();
+        Sach s2 = new Sach();
+        s2.setMaSach("sach2");
+        s2.setTieuDe("Truyện Doraemon");
+        s2.setTacGia("Fujiko Fujio");
+        s2.setNamXB(2015);
+        s2.setSL(1000);
+        s2.hienThiThongTin();
     }
-    
 }

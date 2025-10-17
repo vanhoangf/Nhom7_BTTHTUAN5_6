@@ -1,48 +1,33 @@
-
-package sach;
-
-
-public class SachTieuThuyet extends Sach 
+package Nhom7_BTHI.J_Test;
+public class SachTieuThuyet extends Sach
 {
     private String theLoai;
     private boolean laSachSeries;
-    public SachTieuThuyet() 
-    {
-        super();
-    } 
-    public SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, String theLoai, boolean laSachSeries )
+    public SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, String thLoai, boolean laSachSeries)
     {
         super(maSach, tieuDe, tacGia, namXuatBan, soLuong);
-        this.theLoai=theLoai;
-        this.laSachSeries=laSachSeries;
+        this.theLoai = thLoai;
+        this.laSachSeries = laSachSeries;
     }
-
-    public String getTheLoai() 
+    public void setTheLoai(String theLoai)
+    {
+        this.theLoai = theLoai;
+    } 
+    public String getTheLoai()
     {
         return theLoai;
     }
-    public void setTheLoai(String theLoai) 
+    public void setLaSachSeries(boolean laSachSeries)
     {
-        this.theLoai = theLoai;
-    }
-    public boolean isLaSachSeries() 
+        this.laSachSeries = laSachSeries;
+    } 
+    public boolean getLaSachSeries()
     {
         return laSachSeries;
     }
-    public void setLaSachSeries(boolean laSachSeries) 
-    {
-        this.laSachSeries = laSachSeries;
-    }
-   
+    @Override
     public String toString()
     {
-        return super.toString()+ ", The loai:" + theLoai + ", La sach series: " + laSachSeries;
-    }
-    @Override
-    public void hienThiThongTin() 
-    {
-        super.hienThiThongTin(); 
-        System.out.println("The loai: " + (theLoai != null ? theLoai : "--"));
-        System.out.println("La sach series: " + laSachSeries); 
-    }
+        return super.toString() + ", The loai: " + theLoai + ", La sach series: " + laSachSeries;
+    }    
 }

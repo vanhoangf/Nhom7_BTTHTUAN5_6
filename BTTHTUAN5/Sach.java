@@ -1,13 +1,11 @@
-package sach;
-
 public class Sach 
 {
     private String maSach;
     private String tieuDe;
     private String tacGia;
-    private int namXuatBan;
-    private int soLuong; 
-
+    int namXuatBan;
+    int soLuong;
+    
     public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong) 
     {
         this.maSach = maSach;
@@ -16,71 +14,62 @@ public class Sach
         this.namXuatBan = namXuatBan;
         this.soLuong = soLuong;
     }
-    
-    public Sach(String maSach, String tacGia, int soLuong) 
-    {
-        this.maSach = maSach;
-        this.tacGia = tacGia;
-        this.soLuong = soLuong;
+
+    public Sach()
+    {  
     }
 
-    public Sach(String maSach, String tieuDe, String tacGia) 
+    public void hienThiThongTin()
+    {
+        System.out.println("Mã sách: " + maSach);
+        System.out.println("Tiêu đề: " + tieuDe);
+        System.out.println("Tác giả: " + tacGia);
+        System.out.println("Năm xuất bản: " + namXuatBan);
+        System.out.println("Số lượng: " + soLuong);
+    }
+
+    public void setMaSach(String maSach)
     {
         this.maSach = maSach;
-        this.tieuDe = tieuDe;
-        this.tacGia = tacGia;
     }
-    
-    
-    public String getmaSach()
+    public String getMaSach(String maSach)
     {
         return maSach;
     }
-    public void setmaSach(String maSach)
+
+    public void setTieuDe(String tieuDe)
     {
-        this.maSach=maSach;
+        this.tieuDe = tieuDe;
     }
-    public String gettieuDe()
+    public String getTieuDe(String tieuDe)
     {
         return tieuDe;
     }
-    public void settieuDe(String tieuDe)
+
+    public void setTacGia(String tacGia)
     {
-        this.tieuDe=tieuDe;
+        this.tacGia = tacGia;
     }
-    public String gettacGia()
+    public String getTacGia(String tacGia)
     {
         return tacGia;
     }
-    public void settacGia(String tacGia)
+
+    public void setNamXB(int namXuatBan)
     {
-        this.tacGia=tacGia;
+        this.namXuatBan = namXuatBan;
     }
-    public int getnamXuatBan()
+    public int getNamXB(int namXuatBan)
     {
         return namXuatBan;
     }
-    public void setnamXuatBan(int namXuatBan)
+
+    public void setSL(int soLuong)
     {
-        this.namXuatBan=namXuatBan;
+        this.soLuong = soLuong;
     }
-    public int getsoLuong()
+    public int getSL(int soLuong)
     {
         return soLuong;
     }
-    public void setsoLuong(int soLuong)
-    {
-        this.soLuong=soLuong;
-    }
-    
-    public void hienThi() 
-    {
-        System.out.println("Ma sach: " + (maSach != null ? maSach : "--"));
-        System.out.println("Tieu de: " + (tieuDe != null ? tieuDe : "--"));
-        System.out.println("Tac gia: " + (tacGia != null ? tacGia : "--"));
-        System.out.println("Nam xuat ban: " + (namXuatBan != 0 ? namXuatBan : "--"));
-        System.out.println("So luong: " + (soLuong != 0 ? soLuong : "--"));
-    }
-
-    
 }

@@ -1,14 +1,12 @@
-
-package sach;
-
+package Nhom7_BTHI.J_Test;
 public class Sach 
 {
-    protected String maSach;
-    protected String tieuDe;
-    protected String tacGia;
-    protected int namXuatBan;
-    protected int soLuong; 
-
+    private String maSach;
+    private String tieuDe;
+    private String tacGia;
+    int namXuatBan;
+    int soLuong;
+    
     public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong) 
     {
         this.maSach = maSach;
@@ -17,61 +15,70 @@ public class Sach
         this.namXuatBan = namXuatBan;
         this.soLuong = soLuong;
     }
-    
-    public Sach() 
+
+    /*public Sach()
+    {  
+    }*/
+
+    public void hienThiThongTin()
     {
-        
+        System.out.println("Ma Sach: " + maSach);
+        System.out.println("Tieu de: " + tieuDe);
+        System.out.println("Tac gia: " + tacGia);
+        System.out.println("Nam xuat ban: " + namXuatBan);
+        System.out.println("So Luong: " + soLuong);
     }
 
+    public void setMaSach(String maSach)
+    {
+        this.maSach = maSach;
+    }
     public String getMaSach()
     {
         return maSach;
     }
-    public void setMaSach(String maSach)
+
+    public void setTieuDe(String tieuDe)
     {
-        this.maSach=maSach;
+        this.tieuDe = tieuDe;
     }
     public String getTieuDe()
     {
         return tieuDe;
     }
-    public void setTieuDe(String tieuDe)
+
+    public void setTacGia(String tacGia)
     {
-        this.tieuDe=tieuDe;
+        this.tacGia = tacGia;
     }
     public String getTacGia()
     {
         return tacGia;
     }
-    public void setTacGia(String tacGia)
+
+    public void setNamXB(int namXuatBan)
     {
-        this.tacGia=tacGia;
+        this.namXuatBan = namXuatBan;
     }
-    public int getNamXuatBan()
+    public int getNamXB()
     {
         return namXuatBan;
     }
-    public void setNamXuatBan(int namXuatBan)
+
+    public void setSL(int soLuong)
     {
-        this.namXuatBan=namXuatBan;
+        this.soLuong = soLuong;
     }
-    public int getSoLuong()
+    public int getSL()
     {
         return soLuong;
     }
-    public void setSoLuong(int soLuong)
-    {
-        this.soLuong=soLuong;
-    }
-    
-    public void hienThiThongTin() 
-    {
-        System.out.println("Ma sach: " + (maSach != null ? maSach : "--"));
-        System.out.println("Tieu de: " + (tieuDe != null ? tieuDe : "--"));
-        System.out.println("Tac gia: " + (tacGia != null ? tacGia : "--"));
-        System.out.println("Nam xuat ban: " + (namXuatBan != 0 ? namXuatBan : "--"));
-        System.out.println("So luong: " + (soLuong != 0 ? soLuong : "--"));
-    }
-  
-    
+    @Override
+    public String toString() {
+        return "Ma Sach: " + maSach +
+            ", Tieu de: '" + tieuDe + 
+            ", Tac gia: '" + tacGia + 
+            ", Nam Xuat Ban: " + namXuatBan +
+            ", So Luong: " + soLuong;
+}
 }
