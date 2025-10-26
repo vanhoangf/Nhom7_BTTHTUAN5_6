@@ -1,14 +1,18 @@
- package BTTHTUAN7;
+ package BTTHTUAN8;
 
  public class SachTieuThuyet extends Sach
  {
     private String theLoai;
     private Boolean laSachSeries;
-    public SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong,double giaCoBan, String theLoai, Boolean laSachSeries)
+    public SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong,double giaCoBan, String theLoai, boolean laSachSeries)
     {
         super(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
         this.theLoai = theLoai;
         this.laSachSeries = laSachSeries;
+    }
+
+    public SachTieuThuyet()
+    {
     }
 
     public void setTheLoai(String theLoai)

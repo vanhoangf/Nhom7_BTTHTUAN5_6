@@ -1,4 +1,4 @@
-package BTTHTUAN7;
+package BTTHTUAN8;
 
 public class SachGiaoTrinh extends Sach
 {
@@ -10,6 +10,10 @@ public class SachGiaoTrinh extends Sach
         super(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
         this.monHoc = monHoc;
         this.capDo = capDo;
+    }
+
+    public SachGiaoTrinh()
+    {
     }
 
      public void setMonHoc(String monHoc)

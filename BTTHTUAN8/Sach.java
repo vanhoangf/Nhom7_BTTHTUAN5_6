@@ -1,20 +1,22 @@
-package BTTHTUAN6;
+package BTTHTUAN8;
 
-public class Sach 
+public abstract class Sach implements IGiaBan, IKiemKe
 {
     protected String maSach;
     protected String tieuDe;
     protected String tacGia;
     protected int namXuatBan;
     protected int soLuong;
+    protected double giaCoBan;
     
-    public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong) 
+    public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan) 
     {
         this.maSach = maSach;
         this.tieuDe = tieuDe;
         this.tacGia = tacGia;
         this.namXuatBan = namXuatBan;
         this.soLuong = soLuong;
+        this.giaCoBan = giaCoBan;
     }
 
     public Sach()
@@ -74,6 +76,14 @@ public class Sach
         return soLuong;
     }
 
+    public void setGiaCoBan(double giaCoBan) 
+    {
+        this.giaCoBan = giaCoBan;
+    }
+    public double getGiaCoBan()
+    {
+        return giaCoBan;
+    }
 
     @Override
     public String toString()
@@ -84,4 +94,19 @@ public class Sach
                "\nNăm xuất bản: " + namXuatBan +
                "\nSố lượng: " + soLuong;
     }
+    @Override
+    public abstract double tinhGiaBan();
+
+    @Override
+    public boolean kiemTraTonKho(int soLuongToiThieu)
+    {
+        return this.soLuong >= soLuongToiThieu;
+    }
+
+    @Override
+    public void capNhatViTri(String viTriMoi)
+    {
+        System.out.println("Đã chuyển sách ["+ this.tieuDe +"] đến khu vực [" + viTriMoi + "]");
+    }
+
 }
