@@ -26,6 +26,8 @@ public class Test
             System.out.println("3. Cap nhat sach");
             System.out.println("4. Tim sach");
             System.out.println("5. Hien thi danh sach sach");
+            System.out.println("6. Kiem tra ton kho");
+            System.out.println("7. Cap nhat vi tri sach");
             System.out.println("0. Thoat");
             System.out.print("Nhap vao lua chon cua ban: ");
             
@@ -113,6 +115,43 @@ public class Test
                 case 5:
                     qls.hienThiDanhSach();
                     break;
+                case 6:
+                {
+                    System.out.print("Nhap vao ma sach can kiem tra ton kho: ");
+                    String ms = sc.nextLine();
+                    Sach sachKiemTra = qls.timSach(ms);
+                    if (sachKiemTra != null) 
+                    {
+                        System.out.print("Nhap vao so luong ton kho toi thieu can kiem tra: ");
+                        int soLuongToiThieu = sc.nextInt();
+                        sc.nextLine();
+                        boolean ketQua = sachKiemTra.kiemTraTonKho(soLuongToiThieu); 
+                        if (ketQua) 
+                            System.out.println("-> KET QUA: Sach '" + sachKiemTra.getTieuDe() + "' (SL: " + sachKiemTra.getSL() + ") DU ton kho (>= " + soLuongToiThieu + ").");
+                        else 
+                            System.out.println("-> KET QUA: Sach '" + sachKiemTra.getTieuDe() + "' (SL: " + sachKiemTra.getSL() + ") KHONG DU ton kho (< " + soLuongToiThieu + ").");
+                        
+                    } 
+                    else 
+                        System.out.println("Khong tim thay sach co ma: " + ms);
+                    break;
+                }
+                case 7:
+                {
+                    System.out.print("Nhap vao ma sach can cap nhat vi tri: ");
+                    String ms = sc.nextLine();
+                    Sach sachCapNhat = qls.timSach(ms);
+                    if (sachCapNhat != null) 
+                    {
+                        System.out.print("Nhap vao vi tri moi (Vi du: Ke A1, Khu B...): ");
+                        String viTriMoi = sc.nextLine();
+                        sachCapNhat.capNhatViTri(viTriMoi); 
+                        System.out.println();
+                    } 
+                    else 
+                        System.out.println("Khong tim thay sach co ma: " + ms);
+                    break;
+                }
                 case 0:
                     System.out.println("Dang thoat chuong trinh...");
                     break;
