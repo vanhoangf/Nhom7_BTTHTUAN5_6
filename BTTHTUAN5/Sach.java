@@ -21,6 +21,76 @@ public class Sach
         this.soLuong = soLuong;
     }
 
+    public Sach(String maSach, String tenSach, int namXuatBan)
+    {
+        this.maSach = maSach;
+        this.tenSach = tenSach;
+        this.namXuatBan = namXuatBan;
+    }
+
+    public Sach(String maSach, String tenSach, int soLuong)
+    {
+        this.maSach = maSach;
+        this.tenSach = tenSach;
+        this.soLuong = soLuong;
+    }
+
+    public Sach (String maSach, String tenSach)
+    {
+        this.maSach = maSach;
+        this.tenSach = tenSach;
+    }
+
+    public String getMaSach()
+    {
+        return maSach;
+    }
+
+    public void setMaSach(String maSach)
+    {
+        this.maSach = maSach;
+    }
+
+    public String getTenSach()
+    {
+        return tenSach;
+    }
+
+    public void setTenSach(String tenSach)
+    {
+        this.tenSach = tenSach;
+    }
+
+    public String getTacGia()
+    {
+        return tacGia;
+    }
+
+    public void setTacGia(String tacGia)
+    {
+        this.tacGia = tacGia;
+    }
+
+    public int getNamXuatBan()
+    {
+        return namXuatBan;
+    }
+
+    public void setNamXuatBan(int namXuatBan)
+    {
+        this.namXuatBan = namXuatBan;
+    }
+
+    public int getSoLuong()
+    {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong)
+    {
+        this.soLuong = soLuong;
+    }
+
     public void hienThiThongTin()
     {
         System.out.println("Mã sách: " + maSach);
@@ -28,51 +98,5 @@ public class Sach
         System.out.println("Tác giả: " + tacGia);
         System.out.println("Năm xuất bản: " + namXuatBan);
         System.out.println("Số lượng: " + soLuong);
-    }
-
-    // setter trước rồi getter sau
-    public void setMaSach(String maSach)
-    {
-        this.maSach = maSach;
-    }
-    public String getMaSach()
-    {
-        return maSach;
-    }
-
-    public void setTenSach(String tenSach)
-    {
-        this.tenSach = tenSach;
-    }
-    public String getTenSach()
-    {
-        return tenSach;
-    }
-
-    public void setTacGia(String tacGia)
-    {
-        this.tacGia = tacGia;
-    }
-    public String getTacGia()
-    {
-        return tacGia;
-    }
-
-    public void setNamXuatBan(int namXuatBan)
-    {
-        this.namXuatBan = namXuatBan;
-    }
-    public int getNamXuatBan()
-    {
-        return namXuatBan;
-    }
-
-    public void setSoLuong(int soLuong)
-    {
-        this.soLuong = soLuong;
-    }
-    public int getSoLuong()
-    {
-        return soLuong;
     }
 }

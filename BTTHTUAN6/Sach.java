@@ -1,79 +1,87 @@
-package BTTUAN5;
+package BTTHTUAN6;
 
-public class Sach
+public class Sach 
 {
     protected String maSach;
-    protected String tenSach;
+    protected String tieuDe;
     protected String tacGia;
     protected int namXuatBan;
     protected int soLuong;
-
-    public Sach()
-    {
-    }
-
-    public Sach(String maSach, String tenSach, String tacGia, int namXuatBan, int soLuong)
+    
+    public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong) 
     {
         this.maSach = maSach;
-        this.tenSach = tenSach;
+        this.tieuDe = tieuDe;
         this.tacGia = tacGia;
         this.namXuatBan = namXuatBan;
         this.soLuong = soLuong;
     }
 
+    public Sach()
+    {  
+    }
 
     public void hienThiThongTin()
     {
         System.out.println("Mã sách: " + maSach);
-        System.out.println("Tên sách: " + tenSach);
+        System.out.println("Tiêu đề: " + tieuDe);
         System.out.println("Tác giả: " + tacGia);
         System.out.println("Năm xuất bản: " + namXuatBan);
         System.out.println("Số lượng: " + soLuong);
     }
 
-    // setter trước rồi getter sau
-    public void setMaSach(String maSach)
+    public void setMaSach(String maSach) 
     {
         this.maSach = maSach;
     }
-    public String getMaSach()
+    public String getMaSach() 
     {
         return maSach;
     }
 
-    public void setTenSach(String tenSach)
+    public void setTieuDe(String tieuDe) 
     {
-        this.tenSach = tenSach;
+        this.tieuDe = tieuDe;
     }
-    public String getTenSach()
+    public String getTieuDe() 
     {
-        return tenSach;
+        return tieuDe;
     }
 
-    public void setTacGia(String tacGia)
+    public void setTacGia(String tacGia) 
     {
         this.tacGia = tacGia;
     }
-    public String getTacGia()
+    public String getTacGia() 
     {
         return tacGia;
     }
 
-    public void setNamXuatBan(int namXuatBan)
+    public void setNamXB(int namXuatBan) 
     {
         this.namXuatBan = namXuatBan;
     }
-    public int getNamXuatBan()
+    public int getNamXB() 
     {
         return namXuatBan;
     }
 
-    public void setSoLuong(int soLuong)
+    public void setSL(int soLuong) 
     {
         this.soLuong = soLuong;
     }
-    public int getSoLuong()
-    {
+    public int getSL() {
         return soLuong;
+    }
+
+
+    @Override
+    public String toString()
+    {
+        return "Mã sách: " + maSach +
+               "\nTiêu đề: " + tieuDe +
+               "\nTác giả: " + tacGia +
+               "\nNăm xuất bản: " + namXuatBan +
+               "\nSố lượng: " + soLuong;
     }
 }

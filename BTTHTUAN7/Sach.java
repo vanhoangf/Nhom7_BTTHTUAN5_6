@@ -1,38 +1,36 @@
-package BTTUAN5;
-
-public abstract class Sach
+package BTTHTUAN7;
+public abstract class Sach 
 {
-    protected String maSach;
-    protected String tenSach;
-    protected String tacGia;
-    protected int namXuatBan;
-    protected int soLuong;
-    protected double giaCoBan;
-    public Sach()
-    {
-    }
-
-    public Sach(String maSach, String tenSach, String tacGia, int namXuatBan, int soLuong,double giaCoBan)
+    private String maSach;
+    private String tieuDe;
+    private String tacGia;
+    private int namXuatBan;
+    private int soLuong;
+    private double giaCoBan;
+    
+    public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan) 
     {
         this.maSach = maSach;
-        this.tenSach = tenSach;
+        this.tieuDe = tieuDe;
         this.tacGia = tacGia;
         this.namXuatBan = namXuatBan;
         this.soLuong = soLuong;
         this.giaCoBan = giaCoBan;
     }
 
+    /*public Sach()
+    {  
+    }*/
 
     public void hienThiThongTin()
     {
-        System.out.println("Mã sách: " + maSach);
-        System.out.println("Tên sách: " + tenSach);
-        System.out.println("Tác giả: " + tacGia);
-        System.out.println("Năm xuất bản: " + namXuatBan);
-        System.out.println("Số lượng: " + soLuong);
+        System.out.println("Ma Sach: " + maSach);
+        System.out.println("Tieu de: " + tieuDe);
+        System.out.println("Tac gia: " + tacGia);
+        System.out.println("Nam xuat ban: " + namXuatBan);
+        System.out.println("So Luong: " + soLuong);
     }
 
-    // setter trước rồi getter sau
     public void setMaSach(String maSach)
     {
         this.maSach = maSach;
@@ -42,13 +40,13 @@ public abstract class Sach
         return maSach;
     }
 
-    public void setTenSach(String tenSach)
+    public void setTieuDe(String tieuDe)
     {
-        this.tenSach = tenSach;
+        this.tieuDe = tieuDe;
     }
-    public String getTenSach()
+    public String getTieuDe()
     {
-        return tenSach;
+        return tieuDe;
     }
 
     public void setTacGia(String tacGia)
@@ -60,39 +58,40 @@ public abstract class Sach
         return tacGia;
     }
 
-    public void setNamXuatBan(int namXuatBan)
+    public void setNamXB(int namXuatBan)
     {
         this.namXuatBan = namXuatBan;
     }
-    public int getNamXuatBan()
+    public int getNamXB()
     {
         return namXuatBan;
     }
 
-    public void setSoLuong(int soLuong)
+    public void setSL(int soLuong)
     {
         this.soLuong = soLuong;
     }
-    public int getSoLuong()
+    public int getSL()
     {
         return soLuong;
     }
-    public void setGiaCoBan(double giaCoBan)
+    public void setGiaCoBan(double giaCoBan) 
     {
         this.giaCoBan = giaCoBan;
     }
-    public double getGiaCoBan()
+    public double getGiaCoBan() 
     {
-        return giaCoBan;
+        return this.giaCoBan;
     }
     @Override
-    public String toString() {
-        return "Mã sách: " + this.maSach +
-                ", Tên sách: " + this.tenSach +
-                ", Tác giả: " + this.tacGia +
-                ", Năm xuất bản: " + this.namXuatBan +
-                ", Số lượng: " + this.soLuong +
-                ", Giá cơ bản: " + this.giaCoBan;
+    public String toString() 
+    {
+        return "Ma Sach: " + maSach +
+            ", Tieu de: '" + tieuDe + 
+            ", Tac gia: '" + tacGia + 
+            ", Nam Xuat Ban: " + namXuatBan +
+            ", So Luong: " + soLuong;
     }
+    @Override
     public abstract double tinhGiaBan();
 }

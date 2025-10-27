@@ -1,34 +1,41 @@
-package BTTUAN5;
+package BTTHTUAN6;
 
 public class SachGiaoTrinh extends Sach
 {
     private String monHoc;
     private String capDo;
-    public SachGiaoTrinh(String maSach, String tenSach, String tacGia, int namXuatBan, int soLuong, String monHoc, String capDo)
+
+    public SachGiaoTrinh(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, String monHoc, String capDo)
     {
-        super(maSach, tenSach, tacGia, namXuatBan, soLuong);
+        super(maSach, tieuDe, tacGia, namXuatBan, soLuong);
         this.monHoc = monHoc;
         this.capDo = capDo;
     }
+
+     public void setMonHoc(String monHoc)
+    {
+        this.monHoc = monHoc;
+    } 
+
     public String getMonHoc()
     {
         return monHoc;
     }
-    public void setMonHoc(String monHoc)
+
+    public void setCapDo(String capDo)
     {
-        this.monHoc = monHoc;
-    }
+        this.capDo = capDo;
+    } 
+
     public String getCapDo()
     {
         return capDo;
     }
-    public void setCapDo(String capDo)
-    {
-        this.capDo = capDo;
-    }
+
     @Override
     public String toString()
     {
-        return super.toString() + ", Môn học: " + this.monHoc + ", Cấp độ: " + this.capDo;
+        return super.toString() + "\nMôn học: " + monHoc + 
+                                   "\nCấp độ: " + capDo;
     }
 }

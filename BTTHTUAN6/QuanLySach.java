@@ -1,75 +1,60 @@
-package BTTUAN5;
+package BTTHTUAN6;
 import java.util.ArrayList;
-public class QuanLiSach
-{
-    private ArrayList<Sach> dsSach;
 
-    public QuanLiSach()
-    {
-        dsSach = new ArrayList<>();
+public class QuanLySach {
+    
+    private ArrayList <Sach> danhSachSach;
+
+    public QuanLySach() {
+        danhSachSach = new ArrayList<>();
     }
-    public void themSach(Sach sachCanThem)
-    {
-        for (Sach sachTrongDS : dsSach)
-        {
-            if (sachTrongDS.getMaSach().equals(sachCanThem.getMaSach()))
-            {
-                System.out.println("Lỗi: Sách có mã '" + sachCanThem.getMaSach() + "' đã tồn tại.");
-                return;
+    
+    public void themSach(Sach s) {
+        danhSachSach.add(s);
+        System.out.println("Đã thêm sách: " + s.getMaSach());
+    }
+   
+    public boolean xoaSach(String maSach) {
+        for (Sach s : danhSachSach) {
+            if (s.getMaSach().equals(maSach)) {
+                danhSachSach.remove(s);
+                System.out.println("Đã xóa sách có mã: " + maSach);
+                return true;
             }
         }
-        dsSach.add(sachCanThem);
-        System.out.println("Đã thêm thành công sách: " + sachCanThem.getTenSach());
+        System.out.println("Không tìm thấy sách có mã: " + maSach);
+        return false;
     }
-    public void hienThiDanhSach()
-    {
-        if (dsSach.isEmpty())
-        {
-            System.out.println("Danh sách hiện đang trống.");
-            return;
+
+    public boolean capNhatSach(String maSach, Sach sachMoi) {
+        for (int i = 0; i < danhSachSach.size(); i++) {
+            if (danhSachSach.get(i).getMaSach().equals(maSach)) {
+                danhSachSach.set(i, sachMoi);
+                System.out.println("Đã cập nhật sách có mã: " + maSach);
+                return true;
+            }
         }
-        System.out.println("\n--- DANH SÁCH SÁCH ---");
-        for (Sach sach : dsSach)
-        {
-            sach.hienThiThongTin();
-            System.out.println("--------------------");
-        }
+        System.out.println("Không tìm thấy sách có mã: " + maSach);
+        return false;
     }
-    public Sach timKiemSach(String maSach)
-    {
-        for (Sach sach : dsSach)
-        {
-            if (sach.getMaSach().equals(maSach))
-            {
-                return sach;
+
+    public Sach timKiemSach(String maSach) {
+        for (Sach s : danhSachSach) {
+            if (s.getMaSach().equals(maSach)) {
+                return s;
             }
         }
         return null;
     }
-    public void capNhatSach(String maSachCanCapNhat, Sach thongTinMoi)
-    {
-        Sach sachCanTim = timKiemSach(maSachCanCapNhat);
 
-        if (sachCanTim != null)
-        {
-            int index = dsSach.indexOf(sachCanTim);
-            dsSach.set(index, thongTinMoi);
-            System.out.println("Đã cập nhật thành công sách có mã: " + maSachCanCapNhat);
-        }
-        else
-        {
-            System.out.println("Không tìm thấy sách có mã '" + maSachCanCapNhat + "' để cập nhật.");
-        }
-    }
-    public void xoaSach(String maSach)
-    {
-
-        for (int i = 0; i < dsSach.size(); i++)
-        {
-            if (dsSach.get(i).getMaSach().equals(maSach))
-            {
-                dsSach.remove(i);
-                break;
+    public void hienThiDanhSach() {
+        if (danhSachSach.isEmpty()) {
+            System.out.println("Danh sách sách trống!");
+        } else {
+            System.out.println("Danh sách các sách hiện có:");
+            for (Sach s : danhSachSach) {
+                System.out.println("--------------------------------");
+                System.out.println(s.toString());
             }
         }
     }

@@ -1,42 +1,50 @@
-package BTTUAN5;
+ package BTTHTUAN7;
 
-public class SachTieuThuyet extends Sach
-{
+ public class SachTieuThuyet extends Sach
+ {
     private String theLoai;
-    private boolean laSachSeries;
-    public SachTieuThuyet(String maSach, String tenSach, String tacGia, int namXuatBan, int soLuong, double giaCoBan, String theLoai, boolean laSachSeries)
+    private Boolean laSachSeries;
+    public SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong,double giaCoBan, String theLoai, Boolean laSachSeries)
     {
-        super(maSach, tenSach, tacGia, namXuatBan, soLuong,giaCoBan);
+        super(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
         this.theLoai = theLoai;
         this.laSachSeries = laSachSeries;
     }
+
+    public void setTheLoai(String theLoai)
+    {
+        this.theLoai = theLoai;
+    } 
+
     public String getTheLoai()
     {
         return theLoai;
     }
-    public void setTheLoai(String theLoai)
-    {
-        this.theLoai = theLoai;
-    }
-    public boolean isLaSachSeries()
-    {
-        return laSachSeries;
-    }
+
     public void setLaSachSeries(boolean laSachSeries)
     {
         this.laSachSeries = laSachSeries;
-    }
-    @Override
-    public String toString()
+    } 
+
+    public boolean getLaSachSeries()
     {
-        return super.toString() + ", Thể loại: " + this.theLoai + ", Là sách series: " + this.laSachSeries +",giá bán:" + this.tinhGiaBan();
+        return laSachSeries;
     }
+
     @Override
     public double tinhGiaBan()
     {
-        if(this.laSachSeries)
+        if (laSachSeries)
             return this.giaCoBan + 15000;
         else
             return this.giaCoBan;
     }
-}
+
+    @Override
+    public String toString()    
+    {
+        return super.toString() + "\nThể loại: " + theLoai + 
+                                   "\nLà sách series: " + laSachSeries +
+                                   "\nGiá bán: " + this.tinhGiaBan();
+    }
+ }
