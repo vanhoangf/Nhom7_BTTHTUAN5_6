@@ -1,40 +1,33 @@
 package BTTHTUAN7;
-import java.util.ArrayList;
-import java.util.List;
-public class Test {
-    public static void main(String[] args) 
+import java.util.Scanner;
+
+public class Test
+{
+    public static void main(String[] args)
     {
-        QuanLySach qls = new QuanLySach();
+       Scanner sc = new Scanner(System.in);
+       QuanLySach qls = new QuanLySach();
 
-        SachGiaoTrinh sgk1 = new SachGiaoTrinh("SGK01", "Lap trinh huong doi tuong", "Khoa CNTT", 2024, 100, 5000,"Lap trinh  Java", "Dai Hoc");
-        SachTieuThuyet stt1 = new SachTieuThuyet("STT01", "De Men Phieu Luu Ky", "To Hoai", 1941, 50, 5000, "Thieu Nhi", false);
-        SachTieuThuyet stt2 = new SachTieuThuyet("STT02", "Harry Potter va Hon Da Phu Thuy", "J.K. Rowling", 1997, 75, 5000, "Fantasy", true);
+       qls.themSach(new SachTieuThuyet("MS001", "Harry Potter", "J.K.Rowling", 2005, 10, 15000, "Võng Sư", true));
+       qls.themSach(new SachGiaoTrinh("MS002", "Lập Trình hướng đối tượng", "Trà My", 2015, 20,10000, "Lập Trình", "Cao"));
+       qls.hienThiDanhSach();
 
-        System.out.println("--- DA THEM SACH ---");
-        qls.themSach(sgk1);
-        qls.themSach(stt1);
-        qls.themSach(stt2);
-        System.out.println();
+       System.out.print("Nhập mã sách muốn tìm: ");
+       String masach = sc.nextLine();       
+       Sach timsach = qls.timKiemSach(masach);
+       if (timsach != null)
+            timsach.hienThiThongTin();
+       else
+            System.out.println("Không tìm thấy sách.");
 
-        qls.hienThiDanhSach();
-        System.out.println();
-
-        System.out.println("--- TIM KIEM SACH ---");
-        String maCanTim = "STT01";
-        Sach ketQuaTim = qls.timSach(maCanTim);
-        if (ketQuaTim != null) 
-            System.out.println("Tim thay sach: " + ketQuaTim.toString());
-        else 
-            System.out.println("Khong tim thay sach co ma " + maCanTim);
-        System.out.println();
-
-        SachTieuThuyet stt1_moi = new SachTieuThuyet("STT01", "De Men Phieu Luu Ky (Tai ban)", "To Hoai", 2020, 150, 10000,"Thieu Nhi", false);
-        qls.capNhatSach("STT01", stt1_moi);
-        qls.hienThiDanhSach();
-        System.out.println();
-
-        System.out.println("--- XOA SACH ---");
-        qls.xoaSach("SGK01");
-        qls.hienThiDanhSach();
+       System.out.println("Nhập thông tin mã sách muốn cập nhật: ");
+       String macnn = sc.nextLine();
+       qls.capNhatSach(macnn, new SachTieuThuyet("MS001", "Ronaldo", "J.K.Rowling", 2005, 10,30000, "Võng Sư", true));
+       qls.hienThiDanhSach();
+       
+       System.out.println("Nhập thông tin sách muốn xóa: ");
+       String mxoa = sc.nextLine();
+       qls.xoaSach(mxoa);
+       qls.hienThiDanhSach();
     }
 }
