@@ -1,4 +1,6 @@
-public interface IGiaBan 
+package BTTHTUAN8;
+
+public interface IGiaBan
 {
-    double tinhGiaBan(); 
+    double tinhGiaBan();
 }

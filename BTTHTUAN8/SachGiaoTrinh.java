@@ -1,51 +1,45 @@
+package BTTHTUAN8;
+
 public class SachGiaoTrinh extends Sach
 {
     private String monHoc;
     private String capDo;
-    public SachGiaoTrinh(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan, String monHoc, String capDo)
+    public SachGiaoTrinh(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong,double giaCoBan, String monHoc, String capDo)
     {
-        super(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
+        super(maSach, tieuDe, tacGia, namXuatBan, soLuong,giaCoBan);
         this.monHoc = monHoc;
         this.capDo = capDo;
     }
-    public SachGiaoTrinh() {}
-    
-    public void setMonHoc(String monHoc)
+    public SachGiaoTrinh()
     {
-        this.monHoc = monHoc;
-    } 
+    }
     public String getMonHoc()
     {
         return monHoc;
     }
-    public void setCapDo(String capDo)
+    public void setMonHoc(String monHoc)
     {
-        this.capDo = capDo;
-    } 
+        this.monHoc = monHoc;
+    }
     public String getCapDo()
     {
         return capDo;
     }
-
-    public void Nhap()
+    public void setCapDo(String capDo)
     {
-        super.Nhap();
-        sc.nextLine();
-        System.out.print("Nhap vao mon hoc: ");
-        this.monHoc = sc.nextLine();
-        System.out.print("Nhap vao cap do: ");
-        this.capDo = sc.nextLine();
-    }
-
-     @Override
-    public double tinhGiaBan()
-    {
-        int soNamXB = 2025 - this.getNamXB();
-        return this.getGiaCoBan() + (soNamXB * 5000);
+        this.capDo = capDo;
     }
     @Override
     public String toString()
     {
-        return super.toString() + ", Mon hoc: " + monHoc + ", Cap do: " + capDo + ", Gia Ban: " + this.tinhGiaBan();
+        return super.toString() + ", Môn học: " + this.monHoc + ", Cấp độ: " + this.capDo +",giá bán:" + this.tinhGiaBan();
     }
+    @Override
+    public double tinhGiaBan()
+    {
+        int sonamxuatban;
+        sonamxuatban=2025-this.namXuatBan;
+        return this.giaCoBan +(sonamxuatban*5000);
+    }
+
 }

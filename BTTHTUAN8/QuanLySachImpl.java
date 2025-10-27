@@ -1,118 +1,104 @@
+package BTTHTUAN8;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class QuanLySachImpl implements IQuanLySach
 {
-    private List<Sach> danhSachSach;
+    private ArrayList<Sach> dsSach;
 
-    public QuanLySachImpl() 
+    public QuanLySachImpl()
     {
-        danhSachSach = new ArrayList<>();
-    }
-
-    public void Nhap(Scanner sc)
-    {
-        Sach sach = null;
-        System.out.print("Nhap ki tu G la sach giao trinh, ki tu T la sach tieu thuyet: ");
-        char type = ' ';
-        
-        try 
-        {
-            type = sc.nextLine().toLowerCase().charAt(0);
-        } 
-        catch (StringIndexOutOfBoundsException e) 
-        {
-            System.out.println("Ban chua nhap loai sach!");
-            return;
-        }
-
-        switch (type) 
-        {
-            case 'g':
-                sach = new SachGiaoTrinh();
-                sach.Nhap();
-                this.themSach(sach);
-                break;
-            case 't':
-                sach = new SachTieuThuyet();
-                sach.Nhap();
-                this.themSach(sach);
-                break;
-            default:
-                System.out.println("Nhap sai loai sach!");
-                break;
-        }
-    }
-
-    @Override 
-    public void themSach(Sach sach) 
-    {      
-        if (timSach(sach.getMaSach()) != null) 
-        {
-            System.out.println("Ma sach " + sach.getMaSach() + " da ton tai.");
-            return;
-        }
-        danhSachSach.add(sach);
-        System.out.println("Da them sach: " + sach.getTieuDe());
+        dsSach = new ArrayList<>();
     }
     @Override
-    public void xoaSach(String maSach) 
+    public void themSach(Sach sach)
     {
-        Sach sachCanXoa = timSach(maSach);
-        if (sachCanXoa != null) 
+        for (Sach sachTrongDS : dsSach)
         {
-            danhSachSach.remove(sachCanXoa);
-            System.out.println("Da xoa sach co ma: " + maSach);
-        } 
-        else 
-            System.out.println("Khong tim thay sach co ma: " + maSach + " de xoa");
-    }
-    @Override
-    public void capNhatSach(String maSach, Sach thongTinSachMoi) 
-    {
-        Sach sachTrungID = timSach(thongTinSachMoi.getMaSach());
-        
-        if (sachTrungID != null && !sachTrungID.getMaSach().equals(maSach)) 
-        {
-            System.out.println("Loi: Ma sach moi '" + thongTinSachMoi.getMaSach() + "' da ton tai cho mot cuon sach khac.");
-            System.out.println("Cap nhat that bai.");
-            return;
-        }
-
-        for (int i = 0; i < danhSachSach.size(); i++) 
-        {
-            if (danhSachSach.get(i).getMaSach().equals(maSach)) 
+            if (sachTrongDS.getMaSach().equals(sach.getMaSach()))
             {
-                danhSachSach.set(i, thongTinSachMoi);
-                System.out.println("Da cap nhat thanh cong cho sach co ma: " + maSach);
+                System.out.println("Lỗi: Sách có mã '" + sach.getMaSach() + "' đã tồn tại.");
                 return;
             }
         }
-        
-        System.out.println("Khong tim thay sach co ma: " + maSach + " de cap nhat.");
+        dsSach.add(sach);
+        System.out.println("Đã thêm thành công sách: " + sach.getTieuDe());
     }
+
+
     @Override
-    public Sach timSach(String maSach) 
+    public void hienThiDanhSach()
     {
-        for (Sach sach : danhSachSach) 
-            if (sach.getMaSach().equals(maSach)) 
-                return sach;
-        return null; 
-    }
-    @Override
-    public void hienThiDanhSach() 
-    {
-        if (danhSachSach.isEmpty()) 
+        if (dsSach.isEmpty())
         {
-            System.out.println("Danh sach sach trong.");
+            System.out.println("Danh sách hiện đang trống.");
             return;
         }
-        System.out.println("======= DANH SACH SACH =======");
-        for (Sach sach : danhSachSach) 
+        System.out.println("\n--- DANH SÁCH SÁCH ---");
+        for (Sach sach : dsSach)
         {
-            System.out.println(sach.toString()); 
+            System.out.println(sach.toString());
         }
-        System.out.println("==============================");
     }
+
+    @Override
+    public Sach timKiemSach(String maSach)
+    {
+        for (Sach sach : dsSach)
+        {
+            if (sach.getMaSach().equals(maSach))
+            {
+                System.out.println("Tìm thấy sách: " + sach.toString());
+                return sach;
+            }
+        }
+        System.out.println("Không tìm thấy sách có mã '" + maSach + "'");
+        return null;
+    }
+
+    @Override
+    public void capNhatSoLuongSach(String maSach, int soLuongMoi)
+    {
+        Sach sachCanTim = null;
+        for (Sach sach : dsSach) {
+            if (sach.getMaSach().equals(maSach))
+            {
+                sachCanTim = sach;
+                break;
+            }
+        }
+
+        if (sachCanTim != null)
+        {
+            sachCanTim.setSoLuong(soLuongMoi);
+            System.out.println("Đã cập nhật số lượng sách có mã: " + maSach + " thành " + soLuongMoi);
+        }
+        else
+        {
+            System.out.println("Không tìm thấy sách có mã '" + maSach + "' để cập nhật.");
+        }
+    }
+
+    @Override
+    public void xoaSach(String maSach)
+    {
+    Sach sachCanXoa = null;
+    for (Sach sach : dsSach)
+    {
+        if (sach.getMaSach().equals(maSach))
+        {
+            sachCanXoa = sach;
+            break;
+        }
+    }
+
+    if (sachCanXoa != null)
+    {
+        dsSach.remove(sachCanXoa);
+        System.out.println("Đã xóa thành công sách có mã: " + maSach);
+    }
+    else
+    {
+        System.out.println("Không tìm thấy sách có mã '" + maSach + "' để xóa.");
+    }
+    }
+
 }

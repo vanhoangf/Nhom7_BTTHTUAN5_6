@@ -1,5 +1,4 @@
-import java.util.Scanner;
-
+package BTTHTUAN8;
 public abstract class Sach implements IGiaBan, IKiemKe
 {
     protected String maSach;
@@ -8,10 +7,11 @@ public abstract class Sach implements IGiaBan, IKiemKe
     protected int namXuatBan;
     protected int soLuong;
     protected double giaCoBan;
-    
-    Scanner sc = new Scanner(System.in);
+    public Sach()
+    {
+    }
 
-    public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan) 
+    public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong,double giaCoBan)
     {
         this.maSach = maSach;
         this.tieuDe = tieuDe;
@@ -21,15 +21,14 @@ public abstract class Sach implements IGiaBan, IKiemKe
         this.giaCoBan = giaCoBan;
     }
 
-    public Sach(){}
 
     public void hienThiThongTin()
     {
-        System.out.println("Ma Sach: " + maSach);
-        System.out.println("Tieu de: " + tieuDe);
-        System.out.println("Tac gia: " + tacGia);
-        System.out.println("Nam xuat ban: " + namXuatBan);
-        System.out.println("So Luong: " + soLuong);
+        System.out.println("Mã sách: " + maSach);
+        System.out.println("Tiêu đề: " + tieuDe);
+        System.out.println("Tác giả: " + tacGia);
+        System.out.println("Năm xuất bản: " + namXuatBan);
+        System.out.println("Số lượng: " + soLuong);
     }
 
     public void setMaSach(String maSach)
@@ -59,65 +58,51 @@ public abstract class Sach implements IGiaBan, IKiemKe
         return tacGia;
     }
 
-    public void setNamXB(int namXuatBan)
+    public void setNamXuatBan(int namXuatBan)
     {
         this.namXuatBan = namXuatBan;
     }
-    public int getNamXB()
+    public int getNamXuatBan()
     {
         return namXuatBan;
     }
 
-    public void setSL(int soLuong)
+    public void setSoLuong(int soLuong)
     {
         this.soLuong = soLuong;
     }
-    public int getSL()
+    public int getSoLuong()
     {
         return soLuong;
     }
-    public void setGiaCoBan(double giaCoBan) 
+    public void setGiaCoBan(double giaCoBan)
     {
         this.giaCoBan = giaCoBan;
     }
-    public double getGiaCoBan() 
+    public double getGiaCoBan()
     {
-        return this.giaCoBan;
-    }
-    public void Nhap()
-    {
-        System.out.print("Nhap vao ma sach: ");
-        this.maSach = sc.nextLine();
-        System.out.print("Nhap vao tieu de: ");
-        this.tieuDe = sc.nextLine();
-        System.out.print("Nhap vao tac gia: ");
-        this.tacGia = sc.nextLine();
-        System.out.print("Nhap vao nam xuat ban: ");
-        this.namXuatBan = sc.nextInt();
-        System.out.print("Nhap vao so luong: ");
-        this.soLuong = sc.nextInt();
-        System.out.print("Nhap vao gia co ban: ");
-        this.giaCoBan = sc.nextFloat();
+        return giaCoBan;
     }
     @Override
-    public String toString() 
+    public String toString()
     {
-        return "Ma Sach: " + maSach +
-            ", Tieu de: '" + tieuDe + 
-            ", Tac gia: '" + tacGia + 
-            ", Nam Xuat Ban: " + namXuatBan +
-            ", So Luong: " + soLuong;
+        return "Mã sách: " + this.maSach +
+                ", Tên sách: " + this.tieuDe +
+                ", Tác giả: " + this.tacGia +
+                ", Năm xuất bản: " + this.namXuatBan +
+                ", Số lượng: " + this.soLuong +
+                ", Giá cơ bản: " + this.giaCoBan;
     }
     @Override
     public abstract double tinhGiaBan();
     @Override
-    public boolean kiemTraTonKho(int soLuongToiThieu) 
+     public boolean kiemTraTonKho(int soLuongToiThieu)
     {
-            return this.soLuong >= soLuongToiThieu;
+        return this.soLuong >= soLuongToiThieu;
     }
     @Override
-    public void capNhatViTri(String viTriMoi) 
+    public void capNhatViTri(String viTriMoi)
     {
-        System.out.print("Da chuyen sach " + this.tieuDe + " den khu vuc: " + viTriMoi);
+        System.out.println("Đã cập nhật vị trí của sách có tiêu đề '" + this.tieuDe + "' thành '" + viTriMoi + "'.");
     }
 }

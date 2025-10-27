@@ -1,11 +1,10 @@
-import java.util.Scanner;
+package BTTHTUAN8;
 
-public interface IQuanLySach 
+public interface IQuanLySach
 {
-    public void themSach(Sach sach);
-    public void xoaSach(String maSach);
-    public void capNhatSach(String maSach, Sach thongTinSachMoi);
-    public Sach timSach(String maSach);
-    public void hienThiDanhSach();
-    public void Nhap(Scanner sc);  
+    void themSach(Sach sach);
+    void hienThiDanhSach();
+    Sach timKiemSach(String maSach);
+    void  capNhatSoLuongSach(String maSach, int soluongMoi);
+    void xoaSach(String maSach);
 }
