@@ -11,73 +11,87 @@ public class QuanLySach implements IQuanLySach {
     public QuanLySach() {
         danhSachSach = new ArrayList<>();
     }
-
+    @Override
     public void themSach() {
-        System.out.println("Nhập mã sách: ");
+        System.out.println("Nhap ma sach: ");
         String maSach = sc.nextLine();
-        System.out.println("Nhập tiêu đề: ");
+        System.out.println("Nhap tieu de: ");
         String tieuDe = sc.nextLine();
-        System.out.println("Nhập tác giả: ");
+        System.out.println("Nhap tac gia ");
         String tacGia = sc.nextLine();
-        System.out.println("Nhập năm xuất bản: ");
+        System.out.println("Nhap nam xuat ban: ");
         int namXuatBan = Integer.parseInt(sc.nextLine());
-        System.out.println("Nhập số lượng: ");
+        System.out.println("Nhap so luong: ");
         int soLuong = Integer.parseInt(sc.nextLine());
-        System.out.println("Nhập giá cơ bản: ");
+        System.out.println("Nhap gia co ban: ");
         double giaCoBan = Double.parseDouble(sc.nextLine());
 
-        System.out.println("Chọn loại sách cần thêm:");
-        System.out.println("1. Sách giáo trình");
-        System.out.println("2. Sách tiểu thuyết");
+        System.out.println("Chon loai sach can them:");
+        System.out.println("1. Sach giao trinh");
+        System.out.println("2. Sach tieu thuyet");
         System.out.print("Lựa chọn: ");
         int luaChon = Integer.parseInt(sc.nextLine());
 
         Sach sachMoi = null;
 
         if (luaChon == 1) {
-            System.out.println("Nhập môn học: ");
+            System.out.println("Nhap mon hoc: ");
             String monHoc = sc.nextLine();
-            System.out.println("Nhập cấp độ: ");
+            System.out.println("Nhap cap do: ");
             String capDo = sc.nextLine();
 
             sachMoi = new SachGiaoTrinh(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan, monHoc, capDo);
         } else if (luaChon == 2) {
-            System.out.println("Nhập thể loại: ");
+            System.out.println("Nhap the loai: ");
             String theLoai = sc.nextLine();
             System.out.println("Nhập thông tin series (có/không hoặc tên series): ");
             String laSachSeries = sc.nextLine();
 
             sachMoi = new SachTieuThuyet(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan, theLoai, laSachSeries);
         } else {
-            System.out.println("Lựa chọn không hợp lệ!");
+            System.out.println("Lua chon khong hop le!");
             return;
         }
 
         danhSachSach.add(sachMoi);
-        System.out.println("Đã thêm sách mới thành công!\n");
+        System.out.println("Da them thanh cong!\n");
     }
+    public void themSachCoSan(Sach sach) {
+    danhSachSach.add(sach);
+}
 
     @Override
     public void xoaSach(String maSach) {
         Sach sachCanXoa = timSach(maSach);
         if (sachCanXoa != null) {
             danhSachSach.remove(sachCanXoa);
-            System.out.println("✅ Đã xóa sách có mã: " + maSach);
+            System.out.println("Da xoa sach co ma: " + maSach);
         } else {
-            System.out.println("Không tìm thấy sách có mã: " + maSach);
+            System.out.println("Khong tim thay sach co ma: " + maSach);
         }
     }
 
-    @Override
-    public void capNhatSach(String maSach, Sach thongTinSachMoi) {
-        for (int i = 0; i < danhSachSach.size(); i++) {
-            if (danhSachSach.get(i).getMaSach().equals(maSach)) {
-                danhSachSach.set(i, thongTinSachMoi);
-                System.out.println("✅ Đã cập nhật sách có mã: " + maSach);
-                return;
+     @Override
+    public void capNhatSoLuongSach(String maSach, int soLuongMoi)
+    {
+        Sach sachCanTim = null;
+        for (Sach sach : danhSachSach) {
+            if (sach.getMaSach().equals(maSach))
+            {
+                sachCanTim = sach;
+                break;
             }
         }
-        System.out.println("Không tìm thấy sách để cập nhật.");
+
+        if (sachCanTim != null)
+        {
+            sachCanTim.setSoLuong(soLuongMoi);
+            System.out.println("Đã cập nhật số lượng sách có mã: " + maSach + " thành " + soLuongMoi);
+        }
+        else
+        {
+            System.out.println("Không tìm thấy sách có mã '" + maSach + "' để cập nhật.");
+        }
     }
 
     @Override
@@ -91,20 +105,18 @@ public class QuanLySach implements IQuanLySach {
     @Override
     public void hienThiDanhSach() {
         if (danhSachSach.isEmpty()) {
-            System.out.println("❗ Danh sách sách trống.");
+            System.out.println("❗ Danh sach trong.");
             return;
         }
-        System.out.println("\n======= DANH SÁCH SÁCH =======");
+        System.out.println("\n======= DANH SACH SACH =======");
         for (Sach sach : danhSachSach) {
             System.out.println(sach.toString());
-            System.out.println("Giá bán ước tính: " + sach.tinhGiaBan() + " VNĐ");
+            System.out.println("Gia ban uoc tinh: " + sach.tinhGiaBan() + " VNĐ");
             System.out.println("------------------------------");
         }
         System.out.println("==============================\n");
     }
-
-    @Override
-    public void themSach(Sach sach) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
+    
+    
 }
