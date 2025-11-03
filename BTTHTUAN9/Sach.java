@@ -1,12 +1,12 @@
-package sach;
+package sach_tuan8;
 public abstract class Sach implements IGiaBan, IKiemKe
 {
-    protected String maSach;
-    protected String tieuDe;
-    protected String tacGia;
-    protected Double giaCoBan;
-    protected int namXuatBan;
-    protected int soLuong;
+    private String maSach;
+    String tieuDe;
+    private String tacGia;
+    Double giaCoBan;
+    private int namXuatBan;
+    int soLuong;
     
     public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan) 
     {
@@ -92,4 +92,15 @@ public abstract class Sach implements IGiaBan, IKiemKe
             ", So Luong: " + soLuong;
     }
     public abstract double tinhGiaBan();
+    @Override
+    public boolean kiemTraTonKho(int soLuongToiThieu){
+        if(this.soLuong >= soLuongToiThieu)
+            return true;
+        else 
+            return false;
+    }
+    @Override
+    public void capNhatViTri(String viTriMoi){
+        System.out.println("Đã chuyển sách" + this.tieuDe + "đến khu vực:" + viTriMoi);
+    }
 }

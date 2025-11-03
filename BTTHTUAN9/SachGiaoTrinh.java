@@ -1,4 +1,4 @@
-package sach;
+package sach_tuan8;
 public class SachGiaoTrinh extends Sach implements IKiemKe
 {
     private String monHoc;
@@ -36,15 +36,6 @@ public class SachGiaoTrinh extends Sach implements IKiemKe
         int soNamXuatBan=2025-getNamXuatBan();
         return  getGiaCoBan()+(soNamXuatBan*5000);
     }
-    @Override
-    public boolean kiemTraTonKho(int soLuongToiThieu){
-        if(this.soLuong >= soLuongToiThieu)
-            return true;
-        else 
-            return false;
-    }
-    @Override
-    public void capNhatViTri(String viTriMoi){
-        System.out.println("Đã chuyển sách" + this.tieuDe + "đến khu vực:" + viTriMoi);
+    
 }
-}
+

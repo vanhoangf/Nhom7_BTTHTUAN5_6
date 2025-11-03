@@ -1,4 +1,4 @@
-package sach;
+package sach_tuan8;
 public class SachTieuThuyet extends Sach implements IKiemKe
 {
     private String theLoai;
@@ -8,6 +8,10 @@ public class SachTieuThuyet extends Sach implements IKiemKe
         super(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
         this.theLoai = thLoai;
         this.laSachSeries = laSachSeries;
+    }
+
+    SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan, String theLoai, String laSachSeries) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     public void setTheLoai(String theLoai)
     {
@@ -37,16 +41,5 @@ public class SachTieuThuyet extends Sach implements IKiemKe
             return giaCoBan+15000;
         else
             return giaCoBan;
-    }
-    @Override
-    public boolean kiemTraTonKho(int soLuongToiThieu){
-        if(this.soLuong >= soLuongToiThieu)
-            return true;
-        else 
-            return false;
-    }
-    @Override
-    public void capNhatViTri(String viTriMoi){
-        System.out.println("Đã chuyển sách" + this.tieuDe + "đến khu vực:" + viTriMoi);
     }
 }
