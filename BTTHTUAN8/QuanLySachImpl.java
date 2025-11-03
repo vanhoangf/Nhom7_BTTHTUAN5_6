@@ -1,91 +1,104 @@
 package BTTHTUAN8;
 import java.util.ArrayList;
-
-public class QuanLySachImpl implements IQuanLySach 
+public class QuanLySachImpl implements IQuanLySach
 {
-    
-    private ArrayList <Sach> danhSachSach;
+    private ArrayList<Sach> dsSach;
 
-    public QuanLySachImpl() 
+    public QuanLySachImpl()
     {
-        danhSachSach = new ArrayList<>();
+        dsSach = new ArrayList<>();
     }
-    
     @Override
-    public void themSach(Sach s) 
+    public void themSach(Sach sach)
     {
-        for(Sach sach : danhSachSach) 
+        for (Sach sachTrongDS : dsSach)
         {
-            if (sach.getMaSach().equals(s.getMaSach())) 
+            if (sachTrongDS.getMaSach().equals(sach.getMaSach()))
             {
-                System.out.println("Sách với mã " + s.getMaSach() + " đã tồn tại. Không thể thêm.");
+                System.out.println("Lỗi: Sách có mã '" + sach.getMaSach() + "' đã tồn tại.");
                 return;
             }
         }
-        danhSachSach.add(s);
-        System.out.println("Đã thêm sách: " + s.getMaSach());
+        dsSach.add(sach);
+        System.out.println("Đã thêm thành công sách: " + sach.getTieuDe());
     }
-   
+
+
     @Override
-    public boolean xoaSach(String maSach) 
+    public void hienThiDanhSach()
     {
-        for (Sach s : danhSachSach) 
+        if (dsSach.isEmpty())
         {
-            if (s.getMaSach().equals(maSach)) 
-            {
-                danhSachSach.remove(s);
-                System.out.println("Đã xóa sách có mã: " + maSach);
-                return true;
-            }
+            System.out.println("Danh sách hiện đang trống.");
+            return;
         }
-        System.out.println("Không tìm thấy sách có mã: " + maSach);
-        return false;
+        System.out.println("\n--- DANH SÁCH SÁCH ---");
+        for (Sach sach : dsSach)
+        {
+            System.out.println(sach.toString());
+        }
     }
 
     @Override
-    public boolean capNhatSach(String maSach, Sach sachMoi) 
+    public Sach timKiemSach(String maSach)
     {
-        for (int i = 0; i < danhSachSach.size(); i++) 
+        for (Sach sach : dsSach)
         {
-            if (danhSachSach.get(i).getMaSach().equals(maSach)) 
+            if (sach.getMaSach().equals(maSach))
             {
-                danhSachSach.set(i, sachMoi);
-                System.out.println("Đã cập nhật sách có mã: " + maSach);
-                return true;
+                System.out.println("Tìm thấy sách: " + sach.toString());
+                return sach;
             }
         }
-        System.out.println("Không tìm thấy sách có mã: " + maSach);
-        return false;
-    }
-
-    @Override
-    public Sach timKiemSach(String maSach) 
-    {
-        for (Sach s : danhSachSach) 
-        {
-            if (s.getMaSach().equals(maSach)) 
-            {
-                return s;
-            }
-        }
+        System.out.println("Không tìm thấy sách có mã '" + maSach + "'");
         return null;
     }
 
     @Override
-    public void hienThiDanhSach() 
+    public void capNhatSoLuongSach(String maSach, int soLuongMoi)
     {
-        if (danhSachSach.isEmpty()) 
-        {
-            System.out.println("Danh sách sách trống!");
-        } 
-        else 
-        {
-            System.out.println("Danh sách các sách hiện có:");
-            for (Sach s : danhSachSach) 
+        Sach sachCanTim = null;
+        for (Sach sach : dsSach) {
+            if (sach.getMaSach().equals(maSach))
             {
-                System.out.println("--------------------------------");
-                System.out.println(s.toString());
+                sachCanTim = sach;
+                break;
             }
         }
+
+        if (sachCanTim != null)
+        {
+            sachCanTim.setSoLuong(soLuongMoi);
+            System.out.println("Đã cập nhật số lượng sách có mã: " + maSach + " thành " + soLuongMoi);
+        }
+        else
+        {
+            System.out.println("Không tìm thấy sách có mã '" + maSach + "' để cập nhật.");
+        }
     }
+
+    @Override
+    public void xoaSach(String maSach)
+    {
+    Sach sachCanXoa = null;
+    for (Sach sach : dsSach)
+    {
+        if (sach.getMaSach().equals(maSach))
+        {
+            sachCanXoa = sach;
+            break;
+        }
+    }
+
+    if (sachCanXoa != null)
+    {
+        dsSach.remove(sachCanXoa);
+        System.out.println("Đã xóa thành công sách có mã: " + maSach);
+    }
+    else
+    {
+        System.out.println("Không tìm thấy sách có mã '" + maSach + "' để xóa.");
+    }
+    }
+
 }
