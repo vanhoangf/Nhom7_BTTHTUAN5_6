@@ -1,5 +1,9 @@
-package sach_tuan8;
+package BTTHTUAN8;
 
-public interface IGiaBan {
+public interface IGiaBan
+{
+
     double tinhGiaBan();
+        
 }
+
