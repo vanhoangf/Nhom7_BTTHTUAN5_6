@@ -1,79 +1,141 @@
-package sach_tuan8;
-
+package BTTHTUAN8;
 import java.util.Scanner;
 
-public class Test {
-    public static void main(String[] args) {
+public class Test
+{
+    public static void main(String[] args)
+    {
+        IQuanLySach quanLy = new QuanLySachImpl();
+        quanLy.themSach(new SachGiaoTrinh("GT001", "Sách giáo trình 1", "Nguyễn Văn A", 2023, 10, 150000, "Toán", "Cấp 1"));
+        quanLy.themSach(new SachTieuThuyet("TT001", "Sách tiểu thuyết 1", "Nguyễn Văn B", 2023, 5, 120000, "Truyền thuyết", true));
+        quanLy.themSach(new SachTieuThuyet("TT002", "Sách tiểu thuyết 2", "Nguyễn Văn C", 2023, 8, 90000, "Truyền thuyết", false));
+        quanLy.hienThiDanhSach();
         Scanner sc = new Scanner(System.in);
-        QuanLySach qls = new QuanLySach();
-        SachGiaoTrinh sgk1 = new SachGiaoTrinh("SGK01", "Lap trinh huong doi tuong", "Khoa CNTT", 2024, 100, 5000, "Lap trinh  Java", "Dai Hoc");
-        SachTieuThuyet stt1 = new SachTieuThuyet("STT01", "De Men Phieu Luu Ky", "To Hoai", 1941, 50,5000, "Thieu Nhi", false);
-        SachTieuThuyet stt2 = new SachTieuThuyet("STT02", "Harry Potter va Hon Da Phu Thuy", "J.K. Rowling", 1997, 75,10000, "Fantasy", true);
-
-        qls.themSachCoSan(sgk1);
-        qls.themSachCoSan(stt1);
-        qls.themSachCoSan(stt2);
-        
         int luaChon;
 
-        do {
-            System.out.println("\n=========== MENU QUAN LY SACH ===========");
-            System.out.println("1. Them sach moi");
-            System.out.println("2. Hien thi danh sach");
-            System.out.println("3. Tim sach theo ma");
-            System.out.println("4. Xoa sach theo ma");
-            System.out.println("5. Cap nhat thong tin sach");
-            System.out.println("6. Kiem ke ton kho");
-            System.out.println("7: Cap nhat vi tri sach");
-            System.out.println("8.Tinh gia ban sach");
-            System.out.println("0. Thoat");
-            System.out.print("Nhap lua chon : ");
+        do
+        {
+            System.out.println("\n--- MENU ---");
+            System.out.println("1. Nhập sách");
+            System.out.println("2. Hiển thị danh sách");
+            System.out.println("3. Tìm kiếm sách");
+            System.out.println("4. Cập nhật sách");
+            System.out.println("5. Xóa sách");
+            System.out.println("6. Kiểm tra tồn kho");
+            System.out.println("7. Cập nhật vị trí sách");
+            System.out.println("8. Tính giá bán");
+            System.out.println("9. Thoát");
+            System.out.print("Chọn một tùy chọn: ");
 
-            luaChon = Integer.parseInt(sc.nextLine());
+            luaChon = sc.nextInt();
+            sc.nextLine();
 
-            switch (luaChon) {
+            switch (luaChon)
+            {
                 case 1:
-                    qls.themSach();
+                    System.out.println("Chọn loại sách muốn nhập:");
+                    System.out.println("1. Sách Giáo Trình");
+                    System.out.println("2. Sách Tiểu Thuyết");
+                    System.out.print("Nhập lựa chọn (1 hoặc 2): ");
+
+                    int loaiSach = sc.nextInt();
+                    sc.nextLine();
+
+                    Sach sachMoi;
+
+                    if (loaiSach == 1)
+                    {
+                        sachMoi = new SachGiaoTrinh();
+                        System.out.println("Nhập thông tin sách giáo trình:");
+                    }
+                    else if (loaiSach == 2)
+                    {
+                        sachMoi = new SachTieuThuyet();
+                        System.out.println("Nhập thông tin sách tiểu thuyết:");
+                    }
+                    else
+                    {
+                        System.out.println("Lựa chọn không hợp lệ!");
+                        break;
+                    }
+
+                    System.out.print("Mã sách: ");
+                    String maSach = sc.nextLine();
+                    System.out.print("Tiêu đề: ");
+                    String tieuDe = sc.nextLine();
+                    System.out.print("Tác giả: ");
+                    String tacGia = sc.nextLine();
+                    System.out.print("Năm xuất bản: ");
+                    int namXuatBan = sc.nextInt();
+                    System.out.print("Số lượng: ");
+                    int soLuong = sc.nextInt();
+                    System.out.print("Giá cơ bản: ");
+                    double giaCoBan = sc.nextDouble();
+                    sc.nextLine();
+                    sachMoi.setMaSach(maSach);
+                    sachMoi.setTieuDe(tieuDe);
+                    sachMoi.setTacGia(tacGia);
+                    sachMoi.setNamXuatBan(namXuatBan);
+                    sachMoi.setSoLuong(soLuong);
+                    sachMoi.setGiaCoBan(giaCoBan);
+                    if (sachMoi instanceof SachGiaoTrinh)
+                    {
+                        System.out.print("Môn học: ");
+                        String monHoc = sc.nextLine();
+                        System.out.print("Cấp độ: ");
+                        String capDo = sc.nextLine();
+                        ((SachGiaoTrinh) sachMoi).setMonHoc(monHoc);
+                        ((SachGiaoTrinh) sachMoi).setCapDo(capDo);
+                    }
+                    else
+                        if (sachMoi instanceof SachTieuThuyet)
+                    {
+                        System.out.print("Thể loại: ");
+                        String theLoai = sc.nextLine();
+                        System.out.print("Là sách series (true/false): ");
+                        boolean laSachSeries = sc.nextBoolean();
+                        sc.nextLine();
+                        ((SachTieuThuyet) sachMoi).setTheLoai(theLoai);
+                        ((SachTieuThuyet) sachMoi).setLaSachSeries(laSachSeries);
+                    }
+                    quanLy.themSach(sachMoi);
                     break;
                 case 2:
-                    qls.hienThiDanhSach();
+                    quanLy.hienThiDanhSach();
                     break;
+
                 case 3:
-                    System.out.print("Nhap ma sach can tim: ");
+                    System.out.print("Nhập mã sách cần tìm: ");
                     String maTim = sc.nextLine();
-                    Sach s = qls.timSach(maTim);
-                    if (s != null) {
-                        System.out.println("Da tim thay: ");
-                        System.out.println(s.toString());
-                        System.out.println("Gia ban uoc tinh: " + s.tinhGiaBan() + " VNĐ");
-                    } else {
-                        System.out.println("Khong tim thay sach co ma " + maTim);
-                    }
+                    quanLy.timKiemSach(maTim);
                     break;
+
                 case 4:
-                    System.out.print("Nhap ma sach can xoa: ");
-                    String maXoa = sc.nextLine();
-                    qls.xoaSach(maXoa);
-                    break;
-                case 5:
                     System.out.print("Nhập mã sách cần cập nhật số lượng: ");
                     String maCapNhat = sc.nextLine();
-                    Sach sachCanCapNhat = qls.timSach(maCapNhat);
+                    Sach sachCanCapNhat = quanLy.timKiemSach(maCapNhat);
                     if (sachCanCapNhat != null)
                     {
                         System.out.print("Nhập số lượng mới: ");
                         int soLuongMoi = sc.nextInt();
                         sc.nextLine();
-                        qls.capNhatSoLuongSach(maCapNhat, soLuongMoi);
+                        quanLy.capNhatSoLuongSach(maCapNhat, soLuongMoi);
                     }
                     break;
+
+                case 5:
+                    System.out.print("Nhập mã sách cần xóa: ");
+                    String maXoa = sc.nextLine();
+                    quanLy.xoaSach(maXoa);
+                    break;
+
                 case 6:
                     System.out.print("Nhập mã sách cần kiểm tra: ");
                     String maKT = sc.nextLine();
                     System.out.print("Nhập số lượng tối thiểu: ");
                     int sl = sc.nextInt();
 
-                    Sach sachKT = qls.timSach(maKT);
+                    Sach sachKT = quanLy.timKiemSach(maKT);
                     if (sachKT != null)
                     {
                         boolean duHang = sachKT.kiemTraTonKho(sl);
@@ -93,7 +155,7 @@ public class Test {
                     String maCapNhatViTri = sc.nextLine();
                     System.out.print("Nhập vị trí mới: ");
                     String viTriMoi = sc.nextLine();
-                    Sach sachViTri = qls.timSach(maCapNhatViTri);
+                    Sach sachViTri = quanLy.timKiemSach(maCapNhatViTri);
                     if (sachViTri != null)
                     {
                         sachViTri.capNhatViTri(viTriMoi);
@@ -103,19 +165,20 @@ public class Test {
                 case 8:
                     System.out.print("Nhập mã sách cần tính giá bán: ");
                     String maTinhGiaBan = sc.nextLine();
-                    Sach sachGiaBan = qls.timSach(maTinhGiaBan);
+                    Sach sachGiaBan = quanLy.timKiemSach(maTinhGiaBan);
                     if (sachGiaBan != null)
                     {
                         double giaBan = sachGiaBan.tinhGiaBan();
                         System.out.println("Giá bán của sách '" + sachGiaBan.getTieuDe() + "' là: " + giaBan);
                     }
                     break;
-                case 0:
-                    System.out.println("Kết thúc chương trình.");
+                case 9:
+                    System.out.println("Đã thoát chương trình.");
                     break;
+
                 default:
-                    System.out.println("Lua chon khong hop le!");
+                    System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
             }
-        } while (luaChon != 0);
+        } while (luaChon != 9);
     }
 }

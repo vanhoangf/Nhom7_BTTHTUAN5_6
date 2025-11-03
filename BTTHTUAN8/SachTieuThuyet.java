@@ -1,45 +1,46 @@
-package sach_tuan8;
-public class SachTieuThuyet extends Sach implements IKiemKe
+package BTTHTUAN8;
+
+public class SachTieuThuyet extends Sach
 {
     private String theLoai;
     private boolean laSachSeries;
-    public SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan, String thLoai, boolean laSachSeries)
+    public SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan, String theLoai, boolean laSachSeries)
     {
-        super(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
-        this.theLoai = thLoai;
+        super(maSach, tieuDe, tacGia, namXuatBan, soLuong,giaCoBan);
+        this.theLoai = theLoai;
         this.laSachSeries = laSachSeries;
     }
-
-    SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan, String theLoai, String laSachSeries) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    public void setTheLoai(String theLoai)
+    public SachTieuThuyet()
     {
-        this.theLoai = theLoai;
-    } 
+    }
     public String getTheLoai()
     {
         return theLoai;
     }
+    public void setTheLoai(String theLoai)
+    {
+        this.theLoai = theLoai;
+    }
+    public boolean isLaSachSeries()
+    {
+        return laSachSeries;
+    }
     public void setLaSachSeries(boolean laSachSeries)
     {
         this.laSachSeries = laSachSeries;
-    } 
-    public boolean getLaSachSeries()
-    {
-        return laSachSeries;
     }
     @Override
     public String toString()
     {
-        return super.toString() + ", The loai: " + theLoai + ", La sach series: " + laSachSeries;
-    }   
-    @Override
-    public double tinhGiaBan ()
-    {
-        if(laSachSeries)
-            return giaCoBan+15000;
-        else
-            return giaCoBan;
+        return super.toString() + ", Thể loại: " + this.theLoai + ", Là sách series: " + this.laSachSeries +",giá bán:" + this.tinhGiaBan();
     }
+    @Override
+    public double tinhGiaBan()
+    {
+        if(this.laSachSeries)
+            return this.giaCoBan + 15000;
+        else
+            return this.giaCoBan;
+    }
+
 }

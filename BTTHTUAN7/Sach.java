@@ -1,12 +1,12 @@
-package sach;
+package BTTHTUAN7;
 public abstract class Sach 
 {
     private String maSach;
     private String tieuDe;
     private String tacGia;
-    Double giaCoBan;
     private int namXuatBan;
     private int soLuong;
+    private double giaCoBan;
     
     public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan) 
     {
@@ -15,12 +15,12 @@ public abstract class Sach
         this.tacGia = tacGia;
         this.namXuatBan = namXuatBan;
         this.soLuong = soLuong;
-        this.giaCoBan= giaCoBan;
+        this.giaCoBan = giaCoBan;
     }
 
-    public Sach()
+    /*public Sach()
     {  
-    }
+    }*/
 
     public void hienThiThongTin()
     {
@@ -29,7 +29,6 @@ public abstract class Sach
         System.out.println("Tac gia: " + tacGia);
         System.out.println("Nam xuat ban: " + namXuatBan);
         System.out.println("So Luong: " + soLuong);
-        System.out.println("Gia co ban: " + giaCoBan);
     }
 
     public void setMaSach(String maSach)
@@ -59,37 +58,40 @@ public abstract class Sach
         return tacGia;
     }
 
-    public int getNamXuatBan() {
+    public void setNamXB(int namXuatBan)
+    {
+        this.namXuatBan = namXuatBan;
+    }
+    public int getNamXB()
+    {
         return namXuatBan;
     }
 
-    public void setNamXuatBan(int namXuatBan) {
-        this.namXuatBan = namXuatBan;
-    }
-
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
+    public void setSL(int soLuong)
+    {
         this.soLuong = soLuong;
     }
-
-    public double getGiaCoBan() {
-        return giaCoBan;
+    public int getSL()
+    {
+        return soLuong;
     }
-
-    public void setGiaCoBan(Double giaCoBan) {
+    public void setGiaCoBan(double giaCoBan) 
+    {
         this.giaCoBan = giaCoBan;
     }
-    
+    public double getGiaCoBan() 
+    {
+        return this.giaCoBan;
+    }
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "Ma Sach: " + maSach +
             ", Tieu de: '" + tieuDe + 
             ", Tac gia: '" + tacGia + 
             ", Nam Xuat Ban: " + namXuatBan +
             ", So Luong: " + soLuong;
     }
+    @Override
     public abstract double tinhGiaBan();
 }

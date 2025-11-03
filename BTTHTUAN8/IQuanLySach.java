@@ -1,12 +1,10 @@
+package BTTHTUAN8;
 
-package sach_tuan8;
-
-public interface IQuanLySach {
-    void themSach();
-    void themSachCoSan(Sach sach);
-    Sach timSach(String MaSach);
-    void xoaSach(String maSach);
-    void capNhatSoLuongSach(String maSach, int soLuongMoi);
+public interface IQuanLySach
+{
+    void themSach(Sach sach);
     void hienThiDanhSach();
-    
+    Sach timKiemSach(String maSach);
+    void  capNhatSoLuongSach(String maSach, int soluongMoi);
+    void xoaSach(String maSach);
 }

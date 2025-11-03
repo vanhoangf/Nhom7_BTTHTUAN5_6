@@ -1,7 +1,7 @@
-package sach_tuan8;
+package BTTHTUAN8;
 
-public interface IKiemKe {
-   boolean kiemTraTonKho(int soLuongToiThieu);
-   void capNhatViTri(String viTriMoi);
-   
+public interface IKiemKe
+{
+    boolean kiemTraTonKho(int soLuongToiThieu);
+    void capNhatViTri(String viTriMoi);
 }
