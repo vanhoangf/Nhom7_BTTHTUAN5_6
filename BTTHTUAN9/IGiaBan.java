@@ -1,9 +1,6 @@
-package BTTHTUAN8;
+package BTTHTUAN9;
 
 public interface IGiaBan
 {
-
     double tinhGiaBan();
-        
 }
-
