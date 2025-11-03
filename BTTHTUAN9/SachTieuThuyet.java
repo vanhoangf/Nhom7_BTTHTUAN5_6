@@ -1,4 +1,5 @@
-public class SachTieuThuyet extends Sach
+package sach_tuan8;
+public class SachTieuThuyet extends Sach implements IKiemKe
 {
     private String theLoai;
     private boolean laSachSeries;
@@ -8,8 +9,10 @@ public class SachTieuThuyet extends Sach
         this.theLoai = thLoai;
         this.laSachSeries = laSachSeries;
     }
-    public SachTieuThuyet() {}
-    
+
+    SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan, String theLoai, String laSachSeries) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     public void setTheLoai(String theLoai)
     {
         this.theLoai = theLoai;
@@ -22,34 +25,21 @@ public class SachTieuThuyet extends Sach
     {
         this.laSachSeries = laSachSeries;
     } 
-    public boolean isLaSachSeries()
+    public boolean getLaSachSeries()
     {
         return laSachSeries;
-    }
-
-    public void Nhap()
-    {
-        super.Nhap();
-        sc.nextLine();
-        System.out.print("Nhap vao the loai: ");
-        this.theLoai = sc.nextLine();
-        System.out.print("Nhap vao true neu la sach seri nguoc lai nhap false: ");
-        this.laSachSeries = sc.nextBoolean();
-        sc.nextLine();
-    }
-
-    @Override
-    public double tinhGiaBan()
-    {
-        int soNamXB = 2025 - this.getNamXB();
-        if (this.isLaSachSeries())
-            return this.getGiaCoBan() + 15000;
-        else
-            return this.getGiaCoBan();
     }
     @Override
     public String toString()
     {
-        return super.toString() + ", The loai: " + theLoai + ", La sach series: " + laSachSeries + ", Gia Ban: " + this.tinhGiaBan();
-    }    
+        return super.toString() + ", The loai: " + theLoai + ", La sach series: " + laSachSeries;
+    }   
+    @Override
+    public double tinhGiaBan ()
+    {
+        if(laSachSeries)
+            return giaCoBan+15000;
+        else
+            return giaCoBan;
+    }
 }

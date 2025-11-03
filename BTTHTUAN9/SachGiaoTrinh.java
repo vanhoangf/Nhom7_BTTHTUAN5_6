@@ -1,4 +1,5 @@
-public class SachGiaoTrinh extends Sach
+package sach_tuan8;
+public class SachGiaoTrinh extends Sach implements IKiemKe
 {
     private String monHoc;
     private String capDo;
@@ -8,8 +9,6 @@ public class SachGiaoTrinh extends Sach
         this.monHoc = monHoc;
         this.capDo = capDo;
     }
-    public SachGiaoTrinh() {}
-    
     public void setMonHoc(String monHoc)
     {
         this.monHoc = monHoc;
@@ -26,26 +25,17 @@ public class SachGiaoTrinh extends Sach
     {
         return capDo;
     }
-
-    public void Nhap()
-    {
-        super.Nhap();
-        sc.nextLine();
-        System.out.print("Nhap vao mon hoc: ");
-        this.monHoc = sc.nextLine();
-        System.out.print("Nhap vao cap do: ");
-        this.capDo = sc.nextLine();
-    }
-
-     @Override
-    public double tinhGiaBan()
-    {
-        int soNamXB = 2025 - this.getNamXB();
-        return this.getGiaCoBan() + (soNamXB * 5000);
-    }
     @Override
     public String toString()
     {
-        return super.toString() + ", Mon hoc: " + monHoc + ", Cap do: " + capDo + ", Gia Ban: " + this.tinhGiaBan();
+        return super.toString() + ", Mon hoc: " + monHoc + ", Cap do: " + capDo;
     }
+    @Override
+    public double tinhGiaBan ()
+    {
+        int soNamXuatBan=2025-getNamXuatBan();
+        return  getGiaCoBan()+(soNamXuatBan*5000);
+    }
+    
 }
+
